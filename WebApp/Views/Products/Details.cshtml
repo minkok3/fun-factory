@@ -1,0 +1,50 @@
+﻿@model WebApp.Domain.Component
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <h4>@Model.Name</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <img class="img-responsive" alt="@Model.Name" src="~/Content/img/@(Model.Sku).jpg" />
+    </div>
+    @using (Html.BeginForm("Details", "Products", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.Id)
+        <div class="col-md-7">
+            <div class="description">
+                <p>@Html.Raw(Model.Description)</p>
+                @if (Model.Components.Any())
+                {
+                    <p>Kit Contains</p>
+                    <ul class="components">
+                        @foreach (var c in Model.Components)
+                        {
+                            <li>@c.Qty x @c.Component.Name @Html.ActionLink("view item", "Details", "Products", new {c.Component.Id}, new {@class = "btn btn-xs btn-default"})</li>
+                        }
+                    </ul>
+                }
+            </div>
+            <p>Price: £@Model.Price</p>
+            <p>Stock: @Model.StockQty</p>
+            <p>Quantity: <input type="text" name="qty" value="1" /></p>
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @ViewBag.Message
+                </div>
+            }
+
+            <p><button type="submit" class="btn btn-primary">Buy</button></p>
+        </div>
+    }
+</div>
+

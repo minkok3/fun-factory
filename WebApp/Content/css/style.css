@@ -1,0 +1,13 @@
+﻿body {
+    margin-top: 20px;
+}
+
+.body {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    min-height: 800px;
+}
+
+.description {
+    margin-top: 20px;
+}

@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/style.css" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="@(ViewBag.Title == "Welcome" ? "active" : "")">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li role="presentation" class="@(ViewBag.Title == "Products" ? "active" : "")">@Html.ActionLink("Products", "Index", "Products")</li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Fun Factory</h3>
+        </div>
+        <div class="body">
+            @RenderBody()
+        </div>
+        <footer class="footer">
+            <p>&copy; 2015 Company, Inc.</p>
+        </footer>
+
+    </div>
+    <script src="~/Content/js/jquery-1.12.2.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</body>
+</html>
