@@ -1,5 +1,5 @@
-# fun-factory
-A fun project
+# Fun Factory
+> A fun project for everyone.
 
 
 # What you will need
